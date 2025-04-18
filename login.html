@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickDine - Login Portal</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <style>
+    :root {
+      --primary: #ff3838;
+      --primary-dark: #e03131;
+      --light: #ffffff;
+      --dark: #212529;
+      --gray: #6c757d;
+      --light-bg: #f8f9fa;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Nunito', sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .login-container {
+      width: 100%;
+      max-width: 1200px;
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeIn 0.8s ease;
+    }
+    
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--light);
+    }
+    
+    .logo i {
+      color: var(--primary);
+    }
+    
+    .login-title {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .login-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .login-subtitle {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    
+    .login-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .login-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: cardEntrance 0.6s ease-out;
+      animation-fill-mode: backwards;
+    }
+    
+    .login-card:nth-child(1) { animation-delay: 0.2s; }
+    .login-card:nth-child(2) { animation-delay: 0.4s; }
+    .login-card:nth-child(3) { animation-delay: 0.6s; }
+    
+    .login-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.12);
+    }
+    
+    .card-icon {
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 56, 56, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .login-card:hover .card-icon {
+      transform: rotate(10deg) scale(1.1);
+      background: rgba(255, 56, 56, 0.2);
+    }
+    
+    .card-icon i {
+      font-size: 2.8rem;
+      color: var(--primary);
+    }
+    
+    .card-title {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .card-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      opacity: 0.85;
+      flex-grow: 1;
+    }
+    
+    .login-btn {
+      background: var(--primary);
+      color: var(--light);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      box-shadow: 0 4px 15px rgba(255, 56, 56, 0.3);
+    }
+    
+    .login-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 56, 56, 0.4);
+      letter-spacing: 0.5px;
+    }
+    
+    .login-btn i {
+      transition: transform 0.3s ease;
+    }
+    
+    .login-btn:hover i {
+      transform: translateX(5px);
+    }
+    
+    .login-footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+    
+    .login-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-weight: 600;
+    }
+    
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes cardEntrance {
+      from { 
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .login-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .login-header {
+        margin-bottom: 2.5rem;
+      }
+      
+      .logo {
+        font-size: 2.4rem;
+      }
+      
+      .login-title {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+      
+      .login-card {
+        padding: 30px 20px;
+      }
+      
+      .card-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+      }
+      
+      .card-title {
+        font-size: 1.4rem;
+      }
+      
+      .card-desc {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <div class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>QuickDine</span>
+      </div>
+      <h1 class="login-title">Login Portal</h1>
+      <p class="login-subtitle">
+        Select your account type to access the QuickDine platform. 
+        Each portal provides specialized tools for your needs.
+      </p>
+    </div>
+    
+    <div class="login-grid">
+      <!-- User Login Card -->
+      <div class="login-card">
+        <div class="card-icon">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <h3 class="card-title">Customer Login</h3>
+        <p class="card-desc">
+          Access your personal dining account to place food orders, 
+          make table reservations, view order history, and manage 
+          your preferences.
+        </p>
+        <a href="user-login.html" class="login-btn">
+          Customer Login <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- Restaurant Login Card -->
+      <div class="login-card">
+        <div class="card-icon">
+          <i class="fas fa-store-alt"></i>
+        </div>
+        <h3 class="card-title">Restaurant Login</h3>
+        <p class="card-desc">
+          Restaurant partners can manage incoming orders, update 
+          menus, track inventory, view analytics, and respond to 
+          customer feedback.
+        </p>
+        <a href="restaurant-login.html" class="login-btn">
+          Restaurant Login <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- Admin Login Card -->
+      <div class="login-card">
+        <div class="card-icon">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <h3 class="card-title">Admin Login</h3>
+        <p class="card-desc">
+          System administrators can manage all platform operations, 
+          including user accounts, restaurant partnerships, 
+          promotions, and system configurations.
+        </p>
+        <a href="admin-login.html" class="login-btn">
+          Admin Login <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="login-footer">
+      <p>
+        Need help? <a href="contact.html">Contact support</a> • 
+        <a href="forgot-password.html">Forgot password?</a> • 
+        <a href="signup.html">Create account</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

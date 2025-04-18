@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickDine</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <!-- ✅ Profile Dropdown Section -->
+    <div class="profile-wrapper" onclick="toggleDropdown()">
+    <img src="images/pic1.png" class="profile-avatar" alt="Profile">
+    <span class="profile-name" id="display-name">User</span>
+    <div class="profile-dropdown" id="dropdown-content">
+      <p style="margin-bottom: 0.5rem; font-weight: bold; font-size: 1.3rem;">Logged in as:</p>
+      <p id="login-details" style="margin-bottom: 1rem; font-size: 1.2rem; color: #555;"></p>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+  </div>
+  
+      
+        <a href="#" class="logo"><i class="fas fa-utensils"></i>QuickDine</a>
+      
+        <div id="menu-bar" class="fas fa-bars"></div>
+      
+        <nav class="navbar">
+          <a href="/">home</a>
+          <a href="#speciality">our's special</a>
+          <a href="#popular">popular foods</a>
+          <a href="#gallery">gallery</a>
+          <a href="#review">customer reviews</a>
+          <a href="#order"><button class="btn0">Order Now</button></a>
+        </nav>
+        
+        
+      </header>
+    <section class="home" id="home">
+        <div class="content">
+            <h3>QuickDine</h3>
+            <p>Welcome to QuickDine, where every meal is a culinary masterpiece delivered straight to your door.
+                Explore a world of flavors with our diverse menu, curated from the finest ingredients and prepared by
+                top chefs. Whether you're craving gourmet cuisine, comforting classics, or exotic dishes, SavorDelight
+                promises a dining experience that's always fresh, delicious, and convenient. Order now and indulge in
+                the delight of exceptional food, made just for you. Bon appétit!</p>
+            <a href="/#order" class="btn">order now</a>
+        </div>
+
+        <div class="image">
+            <img src="images/home-img.png" alt="">
+        </div>
+    </section>
+
+    <section class="speciality" id="speciality">
+
+        <h1 class="heading"> our's <span>special</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img class="image" src="images/s-img-1.jpg" alt="">
+                <div class="content">
+                    <img src="images/s-1.png" alt="">
+                    <h3>burger</h3>
+                    <p><span>in our Burger, a perfect blend of succulent, premium beef, fresh, crisp vegetables,
+                            and our signature sauce, all nestled in a perfectly toasted bun. Each bite promises a burst
+                            of
+                            mouthwatering flavors that will leave you craving more. Experience burger perfection
+                            today!</span> </p>
+
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="images/s-img-2.jpg" alt="">
+                <div class="content">
+                    <img src="images/s-2.png" alt="">
+                    <h3>pizza</h3>
+                    <p><span>Savor our Pizza, crafted with a crispy, golden crust, rich tomato sauce, and the
+                            finest,
+                            freshest toppings. Melted cheese and a perfect blend of herbs make every slice a delightful
+                            experience. Enjoy a slice of pizza perfection!</span></p>
+
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="images/s-img-3.jpg" alt="">
+                <div class="content">
+                    <img src="images/s-3.png" alt="">
+                    <h3>cold ice-cream</h3>
+                    <p><span>Treat yourself to our Cold Ice Cream, a creamy, dreamy delight that melts in your mouth.
+                            Choose
+                            from a variety of rich, indulgent flavors, each crafted to perfection. Refreshingly cool and
+                            irresistibly smooth, it's the perfect treat for any time of day.</span></p>
+
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="images/s-img-4.jpg" alt="">
+                <div class="content">
+                    <img src="images/s-4.png" alt="">
+                    <h3>cold drinks</h3>
+                    <p><span>Quench your thirst with our Cold Drinks, a refreshing selection of beverages that offer a
+                            burst of cool, invigorating flavors. Whether you prefer classic sodas, sparkling waters, or
+                            fruity refreshments, each sip is a delightful way to stay cool and refreshed. Enjoy the
+                            chill!</span></p>
+
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="images/s-img-5.jpg" alt="">
+                <div class="content">
+                    <img src="images/s-5.png" alt="">
+                    <h3>sweets</h3>
+                    <p><span>Delight in our Sweets, a heavenly assortment of desserts crafted to satisfy your
+                            sweet tooth. From decadent cakes and pastries to creamy puddings and confections, each treat
+                            is made with the finest ingredients for an indulgent experience. Enjoy the sweetness in
+                            every bite!</span></p>
+
+                </div>
+            </div>
+            <div class="box">
+                <img class="image" src="images/s-img-6.jpg" alt="">
+                <div class="content">
+                    <img src="images/s-6.png" alt="">
+                    <h3>breakfast</h3>
+                    <p><span>Start your day right with our Breakfast, featuring a delicious array of morning
+                            favorites. From fluffy pancakes and golden waffles to hearty omelets and fresh fruit bowls,
+                            every dish is made to energize and satisfy. Enjoy a breakfast that's both delicious and
+                            nourishing!</span></p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="popular" id="popular">
+
+        <h1 class="heading">our <span>popular</span> foods</h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <span class="price"> ₹150 - ₹450 </span>
+                <img src="images/p-1.jpg" alt="burger">
+                <h3>burger</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <a href="/#order" class="btn">order now</a>
+            </div>
+
+            <div class="box">
+                <span class="price"> ₹500 - ₹2100 </span>
+                <img src="images/p-2.jpg" alt="cakes">
+                <h3>cakes</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <a href="/#order" class="btn">order now</a>
+            </div>
+
+            <div class="box">
+                <span class="price"> ₹50 - ₹400 </span>
+                <img src="images/p-3.jpg" alt="sweets">
+                <h3>sweets</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <a href="/#order" class="btn">order now</a>
+            </div>
+
+            <div class="box">
+                <span class="price"> ₹30 - ₹600 </span>
+                <img src="images/p-4.jpg" alt="cupcakes">
+                <h3>cupcakes</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <a href="/#order" class="btn">order now</a>
+            </div>
+
+            <div class="box">
+                <span class="price"> ₹40 - ₹120 </span>
+                <img src="images/p-5.jpg" alt="drinks">
+                <h3>cold drinks</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <a href="/#order" class="btn">order now</a>
+            </div>
+
+            <div class="box">
+                <span class="price"> ₹35 - ₹380 </span>
+                <img src="images/p-6.jpg" alt="ice-cream">
+                <h3>ice-creams</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <a href="/#order" class="btn">order now</a>
+            </div>
+        </div>
+    </section>
+
+<!--     <section class="steps">
+
+        <div class="box">
+            <img src="images/step-1.jpg" alt="">
+            <h3>choose your favourite food</h3>
+        </div>
+        <div class="box">
+            <img src="images/step-2.jpg" alt="">
+            <h3>free and fast delivery</h3>
+        </div>
+        <div class="box">
+            <img src="images/step-3.jpg" alt="">
+            <h3>easy payment methods</h3>
+        </div>
+        <div class="box">
+            <img src="images/step-4.jpg" alt="">
+            <h3>and finally, enjoy your food</h3>
+        </div>
+    </section> -->    
+
+
+    <section class="gallery" id="gallery">
+
+        <h1 class="heading">our food <span>gallery</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images/g-1.jpg" alt="">
+                <div class="content">
+                    <h3>Burger</h3>
+                    <p>Absolutely delicious! The Burger was juicy and flavorful, easily the best burger I've had in a long time.</p>
+                    <a href="/#order" class="btn">order now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/g-3.jpg" alt="">
+                <div class="content">
+                    <h3>food</h3>
+                    <p>Breakfast here is amazing! The pancakes were fluffy, and the omelet was packed with fresh ingredients. A great way to start the day!</p>
+                    <a href="/#order" class="btn">order now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/g-4.jpg" alt="">
+                <div class="content">
+                    <h3>Cup Cakes</h3>
+                    <p>The cupcakes from Quick Dine are absolutely delightful! They're moist, flavorful, and beautifully decorated. Each bite is a little piece of heaven. I can't resist ordering them for every special occasion!"</p>
+                    <a href="/#order" class="btn">order now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/g-5.jpg" alt="">
+                <div class="content">
+                    <h3>Sweets</h3>
+                    <p>The Sweets are simply divine. Every bite of the cake was moist and delicious. A real treat!"</p>
+                    <a href="/#order" class="btn">order now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/p-5.jpg" alt="">
+                <div class="content">
+                    <h3>Cold Drinks</h3>
+                    <p>The Cold Drinks are so refreshing and full of flavor. They were the perfect complement to my meal.</p>
+                    <a href="/#order" class="btn">order now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/g-8.jpg" alt="">
+                <div class="content">
+                    <h3>chocolate</h3>
+                    <p>chocolate from QuickDine are simply delicious! They never fail to satisfy my sweet cravings. Perfect for indulging or sharing with friends</p>
+                    <a href="/#order" class="btn">order now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/p-6.jpg" alt="">
+                <div class="content">
+                    <h3>Cold Ice Cream</h3>
+                    <p> Cold Ice Cream from Quick Dine is a real treat! Creamy, smooth, and oh-so-satisfying. Whether you're cooling off on a hot day or just need a sweet pick-me-up, their ice cream hits the spot every time. Definitely a must-try!</p>
+                    <a href="/#order" class="btn">order now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="review" id="review">
+
+        <h1 class="heading">our customers <span>reviews</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images/pic1.png" alt="">
+                <h3>Priya Patel</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>The Sweets are simply divine. Every bite of the cake was moist and delicious. A real treat!"</p>
+
+            </div>
+            <div class="box">
+                <img src="images/pic2.webp" alt="">
+                <h3>Rahul Gupta</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>QuickDine breakfast is truly satisfying! They always hit the spot for me.</p>
+
+            </div>
+            <div class="box">
+                <img src="images/pic3.jpg" alt="">
+                <h3>meera pandi</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p> It's the ultimate comfort food to start your day with. Highly recommend!</p>
+
+            </div>
+        </div>  
+    </section>
+    
+<!-- ✅ Restaurant Selection Dropdown Section -->
+<section class="restaurant-select" style="padding: 2rem 9%; text-align: center;">
+    <h1 class="heading">Select <span>Restaurant</span></h1>
+    <select id="restaurantDropdown" style="padding: 1rem; font-size: 1.5rem; border-radius: .5rem;">
+        <option value="" disabled selected>Select a restaurant</option>
+        <option value="Andhra Spice">Andhra Spice</option>
+        <option value="Zaitoon">Zaitoon</option>
+        <option value="Cream Stone">Cream Stone</option>
+        <option value="Barbeque Nation">Barbeque Nation</option>
+        <option value="The Pasta Bar">The Pasta Bar</option>
+        <option value="KFC">KFC</option>
+        <option value="Domino's Pizza">Domino's Pizza</option>
+        <option value="Biryani Blues">Biryani Blues</option>
+        <option value="Chili's">Chili's</option>
+        <option value="Paradise Biryani">Paradise Biryani</option>
+        <option value="Copper Chimney">Copper Chimney</option>
+        <option value="Wangs Kitchen">Wangs Kitchen</option>
+        <option value="McDonald's">McDonald's</option>
+        <option value="Taco Bell">Taco Bell</option>
+        <option value="A2B - Adyar Ananda Bhavan">A2B - Adyar Ananda Bhavan</option>
+    </select>
+    
+    <!-- This should be AFTER the select element, not inside it -->
+    <div id="menu-container" style="margin-top: 2rem;"></div>
+</section>
+  
+  
+  
+  
+  <section class="restaurant-select" style="padding: 2rem 9%; text-align: center;">
+    <!-- Dropdown + dynamic menu will be inserted here -->
+  </section>
+  
+    <section class="tables" id="tables">
+      <h1 class="heading">Choose <span>Table</span></h1>
+    
+      <div class="table-container" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; text-align: center;">
+    
+        <!-- 4-Seater -->
+        <div class="table-card" style="background: #ff3838; padding: 2rem; border-radius: 1rem; width: 250px; color: #fff;">
+          <h3>4-Seater Table</h3>
+          <div id="count4" style="margin: 1rem 0; font-size: 1.6rem;">Available: 10</div>
+          <div style="font-size: 2.5rem;">🍽 🍽 🍽 🍽</div>
+          <br>
+          <button onclick="reserveTable('4')" class="btn0">Reserve</button>
+        </div>
+    
+        <!-- 5-Seater -->
+        <div class="table-card" style="background: #ff3838; padding: 2rem; border-radius: 1rem; width: 250px; color: #fff;">
+          <h3>5-Seater Table</h3>
+          <div id="count5" style="margin: 1rem 0; font-size: 1.6rem;">Available: 8</div>
+          <div style="font-size: 2.5rem;">🍽 🍽 🍽 🍽 🍽</div>
+          <br>
+          <button onclick="reserveTable('5')" class="btn0">Reserve</button>
+        </div>
+    
+        <!-- 6-Seater -->
+        <div class="table-card" style="background: #ff3838; padding: 2rem; border-radius: 1rem; width: 250px; color: #fff;">
+          <h3>6-Seater Table</h3>
+          <div id="count6" style="margin: 1rem 0; font-size: 1.6rem;">Available: 6</div>
+          <div style="font-size: 2.5rem;">🍽 🍽 🍽 🍽 🍽 🍽</div>
+          <br>
+          <button onclick="reserveTable('6')" class="btn0">Reserve</button>
+        </div>
+    
+      </div>
+    </section>
+
+
+    <section class="order" id="order">
+
+        <h1 class="heading"><span>order</span> now </h1>
+
+        <div class="row">
+          <form onsubmit="saveOrderData(event)" action="payment.html" method="GET">
+
+            <div class="inputBox">
+                <!-- Restaurant (already filled from dropdown) -->
+<input type="text" id="selected-restaurant" placeholder="Restaurant" readonly>
+
+
+<!-- This will be filled with total amount -->
+<input type="text" id="total-price" placeholder="Total Price" readonly>
+
+              </div>
+              
+                <div class="inputBox">
+                    <input type="number" id="phoneNumber" placeholder="Phone Number">
+                    <input type="text" id="foodItems" placeholder="Food Items (eg:Pizza, Burger)" required>
+                    <div id="total" style="font-size: 1.6rem; font-weight: bold; margin-top: 1rem;"></div>
+
+                    <input type="text" placeholder="Allergies">
+                </div>
+                <textarea placeholder="Other instructions" name="" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="order now" class="btn0">
+            </form>
+        </div>
+    </section>
+
+    <section class="footer">
+
+        <div class="container">
+            <div class="footer-content">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Email: QuickDine@gmail.com</li>
+                    <li>Phone: +91 987654321</li>
+                    <li>Address: Katpadi, Tamil Nadu</li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#speciality">our's special</a></li>
+                    <li><a href="#popular">popular foods</a></li>
+                    <li><a href="#review">customer reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Follow Us</h3>
+                <ul class="social-icons">
+                    <li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://wa.me/+91987654321"><i class="fab fa-whatsapp"></i></a></li>
+
+                    <li><a href="https://in.pinterest.com"><i class="fab fa-pinterest"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    
+
+        <h1 class="credit">
+            created by <span><a href="link">QuickDine Team</a></span> | all rights are reserved
+        </h1>
+    </section>
+
+    <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
+
+    <div class="loader-container">
+        <img src="images/loader.gif" alt="">
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // Get all necessary values
+            const restaurant = document.getElementById("selected-restaurant").value;
+            const foodItems = document.getElementById("foodItems").value;
+            const totalPrice = document.getElementById("total-price").value;
+            
+            // Basic validation
+            if (!restaurant || !foodItems || !totalPrice) {
+                e.preventDefault();
+                alert("Please complete your order before proceeding to payment");
+                return;
+            }
+            
+            // Save to localStorage
+            const orderData = {
+                restaurant: restaurant,
+                items: foodItems,
+                total: totalPrice,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('currentOrder', JSON.stringify(orderData));
+        });
+        // ===== LOADER & SCROLL TO TOP =====
+        window.onload = () => {
+            document.querySelector('.loader-container').classList.add('fade-out');
+            window.onscroll = () => {
+                const scrollBtn = document.querySelector('#scroll-top');
+                if (scrollBtn) scrollBtn.classList.toggle('active', window.scrollY > 60);
+            };
+            const username = localStorage.getItem("username") || "User";
+            document.getElementById("display-name").textContent = username;
+            document.getElementById("login-details").textContent = username;
+        };
+    
+        // ===== PROFILE DROPDOWN =====
+        window.toggleDropdown = function() {
+            const dropdown = document.getElementById("dropdown-content");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        };
+    
+        window.logout = function() {
+            localStorage.removeItem("username");
+            window.location.href = "login.html";
+        };
+    
+        window.addEventListener("click", function(event) {
+            const dropdown = document.getElementById("dropdown-content");
+            const wrapper = document.querySelector(".profile-wrapper");
+            if (!wrapper.contains(event.target)) dropdown.style.display = "none";
+        });
+    
+        // ===== RESTAURANT MENU SYSTEM =====
+        const restaurantMenus = {
+            "Andhra Spice": [
+                { name: "Andhra Meals", price: 160 },
+                { name: "Gongura Chicken", price: 220 },
+                { name: "Prawns Fry", price: 270 }
+            ],
+            "Zaitoon": [
+                { name: "Shawarma", price: 120 },
+                { name: "Arabian Rice", price: 200 },
+                { name: "Grilled Chicken", price: 250 }
+            ],
+            "Cream Stone": [
+                { name: "Brownie Fudge", price: 160 },
+                { name: "Ferrero Rocher", price: 200 },
+                { name: "Nutella Blast", price: 220 }
+            ],
+            "Barbeque Nation": [
+                { name: "Grilled Paneer", price: 180 },
+                { name: "Tangdi Kebab", price: 250 },
+                { name: "Live Dessert Counter", price: 150 }
+            ],
+            "The Pasta Bar": [
+                { name: "Penne Alfredo", price: 200 },
+                { name: "Spaghetti Bolognese", price: 220 },
+                { name: "Garlic Bread", price: 80 }
+            ],
+            "KFC": [
+                { name: "Zinger Burger", price: 180 },
+                { name: "Hot Wings", price: 200 },
+                { name: "Popcorn Chicken", price: 160 }
+            ],
+            "Domino's Pizza": [
+                { name: "Farmhouse Pizza", price: 250 },
+                { name: "Cheese Burst", price: 300 },
+                { name: "Garlic Breadsticks", price: 150 }
+            ],
+            "Biryani Blues": [
+                { name: "Hyderabadi Chicken Biryani", price: 220 },
+                { name: "Paneer 65", price: 180 },
+                { name: "Mutton Kebab", price: 280 }
+            ],
+            "Chili's": [
+                { name: "Southwest Egg Rolls", price: 200 },
+                { name: "Chicken Crispers", price: 250 },
+                { name: "Molten Lava Cake", price: 180 }
+            ],
+            "Paradise Biryani": [
+                { name: "Chicken Biryani", price: 200 },
+                { name: "Veg Biryani", price: 180 },
+                { name: "Double Ka Meetha", price: 120 }
+            ],
+            "Copper Chimney": [
+                { name: "Butter Chicken", price: 220 },
+                { name: "Roomali Roti", price: 40 },
+                { name: "Paneer Masala", price: 180 }
+            ],
+            "Wangs Kitchen": [
+                { name: "Chilli Chicken", price: 180 },
+                { name: "Fried Rice", price: 150 },
+                { name: "Manchurian Gravy", price: 160 }
+            ],
+            "McDonald's": [
+                { name: "McSpicy Paneer", price: 120 },
+                { name: "French Fries", price: 100 },
+                { name: "McFlurry", price: 140 }
+            ],
+            "Taco Bell": [
+                { name: "Crunchwrap Supreme", price: 180 },
+                { name: "Cheesy Nachos", price: 150 },
+                { name: "Mexican Tacos", price: 120 }
+            ],
+            "A2B - Adyar Ananda Bhavan": [
+                { name: "Ghee Dosa", price: 80 },
+                { name: "Mini Meals", price: 120 },
+                { name: "Rava Kesari", price: 60 }
+            ]
+        };
+    
+        // Initialize restaurant dropdown
+        document.addEventListener("DOMContentLoaded", function() {
+            const dropdown = document.getElementById("restaurantDropdown");
+            const menuContainer = document.getElementById("menu-container");
+            const restaurantInput = document.getElementById("selected-restaurant");
+            
+            menuContainer.style.display = "none";
+            
+            dropdown.addEventListener("change", function() {
+                const selectedRestaurant = this.value;
+                restaurantInput.value = selectedRestaurant;
+                menuContainer.innerHTML = "";
+                document.getElementById("foodItems").value = "";
+                document.getElementById("total-price").value = "";
+                document.getElementById("total").textContent = "";
+                
+                if (!selectedRestaurant) {
+                    menuContainer.style.display = "none";
+                    return;
+                }
+                
+                menuContainer.innerHTML = "<p>Loading menu...</p>";
+                menuContainer.style.display = "block";
+                
+                setTimeout(() => {
+                    showRestaurantMenu(selectedRestaurant);
+                }, 300);
+            });
+        });
+    
+        function showRestaurantMenu(restaurantName) {
+            const menuContainer = document.getElementById("menu-container");
+            const menu = restaurantMenus[restaurantName];
+            
+            if (!menu) {
+                menuContainer.innerHTML = "<p>Menu not available for this restaurant</p>";
+                return;
+            }
+            
+            let menuHTML = `<h3 style="font-size:1.8rem;margin-bottom:1rem;color:#333;text-align:center;">${restaurantName} Menu</h3><div style="display:flex;flex-direction:column;gap:1rem;max-width:600px;margin:0 auto;">`;
+            
+            menu.forEach(item => {
+                menuHTML += `
+                    <div style="display:flex;align-items:center;gap:1rem;padding:0.8rem;background:#f9f9f9;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+                        <input type="checkbox" class="menu-item" value="${item.name}" data-price="${item.price}" onchange="updateOrderSummary()" style="transform:scale(1.3);cursor:pointer;">
+                        <label style="flex-grow:1;font-size:1.2rem;cursor:pointer;">${item.name} - ₹${item.price}</label>
+                        <input type="number" min="1" value="1" class="food-qty" onchange="updateOrderSummary()" style="width:60px;padding:0.3rem;font-size:1rem;border:1px solid #ddd;border-radius:4px;">
+                    </div>
+                `;
+            });
+            
+            menuContainer.innerHTML = menuHTML + '</div>';
+        }
+    
+        function updateOrderSummary() {
+            const selectedItems = [];
+            let total = 0;
+            
+            document.querySelectorAll('#menu-container .menu-item:checked').forEach(checkbox => {
+              const qtyInput = checkbox.parentElement.querySelector('.food-qty');
+              const qty = parseInt(qtyInput.value) || 1;
+              const price = parseInt(checkbox.dataset.price);
+              selectedItems.push(`${checkbox.value} ₹${price} x${qty}`); // Include price in the string
+              total += price * qty;
+            });
+            
+            document.getElementById("foodItems").value = selectedItems.join(", ");
+            document.getElementById("total-price").value = total > 0 ? `₹${total}` : "";
+            document.getElementById("total").textContent = total > 0 ? `Total: ₹${total}` : "";
+          }
+    
+        // ===== TABLE RESERVATION =====
+        const tableCounts = { "4": 10, "5": 8, "6": 6 };
+    
+        window.reserveTable = function(size) {
+            if (tableCounts[size] > 0) {
+                tableCounts[size]--;
+                document.getElementById(`count${size}`).textContent = `Available: ${tableCounts[size]}`;
+                alert(`✅ Table for ${size} reserved successfully!`);
+            } else {
+                alert(`❌ Sorry, no ${size}-seater tables available`);
+            }
+        };
+    
+        // ===== FORM SUBMISSION =====
+        window.saveOrderData = function(event) {
+            event.preventDefault();
+            
+            // Get form values using specific IDs
+            const phone = document.getElementById("phoneNumber").value;
+            const foodItems = document.getElementById("foodItems").value;
+            const allergies = document.querySelector('input[type="text"][placeholder="Allergies"]').value;
+            const instructions = document.querySelector('textarea').value;
+            
+            // Improved phone number validation
+            if (!phone || !/^\d{10}$/.test(phone)) {
+                alert("Please enter a valid 10-digit phone number (digits only)");
+                return;
+            }
+            
+            // Rest of your validation and submission logic...
+            const restaurant = document.getElementById("selected-restaurant").value;
+            if (!restaurant) {
+                alert("Please select a restaurant first");
+                return;
+            }
+        
+            if (!foodItems) {
+                alert("Please select at least one item from the menu");
+                return;
+            }
+        
+            // Calculate order total
+            const totalPrice = document.getElementById("total-price").value.replace('₹', '');
+            const subtotal = parseFloat(totalPrice);
+            const tax = subtotal * 0.05;
+            const total = subtotal + tax;
+        
+            // Prepare order data
+            const orderData = {
+                restaurant: restaurant,
+                items: foodItems,
+                subtotal: subtotal,
+                tax: tax,
+                total: total,
+                phone: phone,
+                allergies: allergies,
+                instructions: instructions,
+                timestamp: new Date().toISOString(),
+                status: "pending"
+            };
+        
+            // Save to localStorage
+            localStorage.setItem('currentOrder', JSON.stringify(orderData));
+            
+            // Redirect to payment page
+            window.location.href = "payment.html";
+        };
+    </script>
+   
+    
+</body>
+
+</html>

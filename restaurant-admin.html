@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Order Management</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <style>
+    /* Styling */
+    :root {
+      --red: #ff3838;
+      --green: #28a745;
+      --gray: #6c757d;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    header {
+      background: var(--red);
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-title {
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .btn {
+      background: white;
+      color: var(--red);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: #f0f0f0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .filter-btns {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .filter-btn.active {
+      background: var(--red);
+      color: white;
+    }
+    .orders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+    .order-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 4px solid var(--gray);
+    }
+    .order-card.pending {
+      border-left-color: var(--red);
+    }
+    .order-card.completed {
+      border-left-color: var(--green);
+    }
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    .order-restaurant {
+      font-weight: bold;
+      color: var(--red);
+    }
+    .order-status {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+    .status-pending {
+      background: #ffe0e0;
+      color: var(--red);
+    }
+    .status-completed {
+      background: #e0ffe0;
+      color: var(--green);
+    }
+    .order-details {
+      margin: 0.8rem 0;
+    }
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.4rem 0;
+    }
+    .order-total {
+      font-weight: bold;
+      text-align: right;
+      margin-top: 0.8rem;
+      font-size: 1.1rem;
+    }
+    .order-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+    .action-btn {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      flex: 1;
+    }
+    .complete-btn {
+      background: var(--green);
+      color: white;
+    }
+    .view-btn {
+      background: #007bff;
+      color: white;
+    }
+    .no-orders {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-title">
+      <i class="fas fa-user-shield"></i>
+      <span>QuickDine Admin Dashboard</span>
+    </div>
+    <button class="btn" onclick="window.location.href='login.html'">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </header>
+
+  <div class="container">
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="filterOrders('all')">All Orders</button>
+      <button class="filter-btn" onclick="filterOrders('pending')">Pending</button>
+      <button class="filter-btn" onclick="filterOrders('completed')">Completed</button>
+    </div>
+
+    <div class="orders-grid" id="ordersContainer">
+      <!-- Orders will be loaded here -->
+    </div>
+  </div>
+
+  <script>
+    // Function to load all orders
+    function loadAllOrders() {
+      const allOrders = [];
+      const restaurants = [
+        "Andhra Spice", "Zaitoon", "Cream Stone", "Barbeque Nation", 
+        "The Pasta Bar", "KFC", "Domino's Pizza", "Biryani Blues",
+        "Chili's", "Paradise Biryani", "Copper Chimney", "Wangs Kitchen",
+        "McDonald's", "Taco Bell", "A2B - Adyar Ananda Bhavan"
+      ];
+
+      // Get orders from each restaurant
+      restaurants.forEach(restaurant => {
+        const key = `restaurant_${restaurant.replace(/\s+/g, '_')}`;
+        const orders = JSON.parse(localStorage.getItem(key)) || [];
+        allOrders.push(...orders.map(order => ({ 
+          ...order, 
+          restaurant,
+          status: order.status || 'pending'
+        })));
+      });
+
+      // Sort orders by timestamp (newest first)
+      allOrders.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      return allOrders;
+    }
+
+    // Render orders in the grid
+    function renderOrders(orders) {
+      const container = document.getElementById('ordersContainer');
+      container.innerHTML = '';
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="no-orders">
+            <i class="fas fa-box-open" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <h3>No orders found</h3>
+          </div>
+        `;
+        return;
+      }
+
+      orders.forEach((order, index) => {
+        const orderCard = document.createElement('div');
+        orderCard.className = `order-card ${order.status}`;
+        orderCard.innerHTML = `
+          <div class="order-header">
+            <span class="order-restaurant">${order.restaurant}</span>
+            <span class="order-status status-${order.status}">${order.status.toUpperCase()}</span>
+          </div>
+          <div class="order-details">
+            <div><strong>Customer:</strong> ${order.customer || 'Guest'}</div>
+            <div><strong>Phone:</strong> ${order.phone || 'N/A'}</div>
+            <div><strong>Time:</strong> ${new Date(order.timestamp).toLocaleString()}</div>
+          </div>
+          <div class="order-items">
+            ${order.items.map(item => `
+              <div class="order-item">
+                <span>${item.name} x${item.quantity}</span>
+                <span>₹${item.price * item.quantity}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="order-total">Total: ₹${order.total.toFixed(2)}</div>
+          ${order.status === 'pending' ? `
+            <div class="order-actions">
+              <button class="action-btn complete-btn" onclick="completeOrder('${order.restaurant}', ${index})">
+                <i class="fas fa-check"></i> Mark Completed
+              </button>
+            </div>
+          ` : ''}
+        `;
+        container.appendChild(orderCard);
+      });
+    }
+
+    // Filter orders by status
+    function filterOrders(status) {
+      const allOrders = loadAllOrders();
+      let filteredOrders = allOrders;
+
+      if (status !== 'all') {
+        filteredOrders = allOrders.filter(order => order.status === status);
+      }
+
+      renderOrders(filteredOrders);
+      updateActiveButton(status);
+    }
+
+    // Update active filter button
+    function updateActiveButton(status) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(button => {
+        if (button.textContent.toLowerCase() === status) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+    }
+
+    // Mark order as completed
+    function completeOrder(restaurantName, orderIndex) {
+      const restaurantKey = `restaurant_${restaurantName.replace(/\s+/g, '_')}`;
+      let orders = JSON.parse(localStorage.getItem(restaurantKey)) || [];
+      
+      if (orders[orderIndex]) {
+        orders[orderIndex].status = "completed";
+        localStorage.setItem(restaurantKey, JSON.stringify(orders));
+
+        // Update in global orders as well
+        let allOrders = JSON.parse(localStorage.getItem('quickdine_orders')) || [];
+        const allOrderIndex = allOrders.findIndex(o => o.timestamp === orders[orderIndex].timestamp && o.restaurant === restaurantName);
+
+        if (allOrderIndex !== -1) {
+          allOrders[allOrderIndex].status = "completed";
+          localStorage.setItem('quickdine_orders', JSON.stringify(allOrders));
+        }
+
+        // Refresh the orders grid
+        filterOrders(document.querySelector('.filter-btn.active').textContent.toLowerCase());
+      }
+    }
+
+    // Initialize the page by showing all orders
+    document.addEventListener('DOMContentLoaded', () => {
+      filterOrders('all');
+    });
+  </script>
+</body>
+</html>

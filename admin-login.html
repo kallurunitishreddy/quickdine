@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login - QuickDine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.9)),
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .card {
+      background: none;
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 400px;
+    }
+    .card h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .inputBox {
+      margin-bottom: 1.5rem;
+    }
+    .inputBox label {
+      display: block;
+      margin-bottom: .5rem;
+      font-size: 1.3rem;
+    }
+    .inputBox input {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: .5rem;
+      font-size: 1.4rem;
+    }
+    .btn {
+      width: 108%;
+      padding: 1rem;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: .5rem;
+      background: #ff3838;
+      color: white;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #e03131;
+    }
+    .error {
+      color: #ff6b6b;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Admin Login</h2>
+    <form onsubmit="handleAdminLogin(event)">
+      <div class="inputBox">
+        <label for="adminid">Admin ID</label>
+        <input type="text" id="adminid" required>
+      </div>
+      <div class="inputBox">
+        <label for="adminpass">Password</label>
+        <input type="password" id="adminpass" required>
+      </div>
+      <button type="submit" class="btn">Sign in</button>
+      <p id="error" class="error"></p>
+    </form>
+  </div>
+
+  <script>
+    function handleAdminLogin(event) {
+      event.preventDefault();
+      const id = document.getElementById("adminid").value;
+      const pass = document.getElementById("adminpass").value;
+      const error = document.getElementById("error");
+
+      // Dummy credentials for demo
+      const validID = "admin";
+      const validPass = "admin123";
+
+      if (id === validID && pass === validPass) {
+        window.location.href = "admin.html";
+      } else {
+        error.textContent = "Invalid Admin ID or password.";
+      }
+    }
+  </script>
+</body>
+</html>
